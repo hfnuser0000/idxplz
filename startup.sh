@@ -1,1 +1,1 @@
-pm2 start yarn --name "next" -- start --port 80
+PORT=80 pm2 start yarn --name "next" -- start
