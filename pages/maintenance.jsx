@@ -1,15 +1,6 @@
 import styled               from "styled-components";
 
 import Layout               from "@/components/layout";
-import CollectionHeading    from "@/components/collection-heading";
-import Card                 from "@/components/card";
-import ProductCard          from '@/components/product-card';
-import CardCollection       from '@/components/card-collection';
-import Image                from '@/components/image';
-
-import ImageVersion         from 'core/image-version';
-
-import Banner               from '@/public/banner.jpg';
 
 export async function getStaticProps(context) {
     const knexClient        = require('core/api/knex');

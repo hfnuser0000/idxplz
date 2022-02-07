@@ -6,10 +6,6 @@ const knexClient = require("../core/api/knex");
 
 router.use(express.json());
 
-router.get("/", async (req, res) => {
-    res.status(301).redirect("https://shop.printinix.com");
-});
-
 router.get("/rss/default/:rssname", async (req, res) => {
     const RSS = require('rss-generator');
     const nameDB = knexClient.connect("../name-db/names.db");

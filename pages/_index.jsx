@@ -9,8 +9,6 @@ import Image                from '@/components/image';
 
 import ImageVersion         from 'core/image-version';
 
-import Banner               from '@/public/banner.jpg';
-
 export async function getStaticProps(context) {
     const knexClient        = require('core/api/knex');
     const nameDB            = knexClient.connect('../name-db/names.db');
@@ -73,12 +71,6 @@ export default function HomePage(props) {
 
     return <Layout title="Home" description={description}>
         <Container>
-            <Card style={{ width: '100%' }} ratio={2} className="desktop-banner">
-                <Image src={Banner} alt="banner" placeholder="blur" blurDataURL="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" layout="fill" objectFit="cover" priority={true}/>
-            </Card>
-            <Card style={{ width: '100%' }} ratio={1} className="mobile-banner">
-                <Image src={Banner} alt="banner" placeholder="blur" blurDataURL="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" layout="fill" objectFit="cover" priority={true}/>
-            </Card>
             <CollectionHeading>
                 Editor&apos;s pick
             </CollectionHeading>
