@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+Disallow: /api/*
+Disallow: /_next/*
+
+# Host
+Host: https://printinix.com
