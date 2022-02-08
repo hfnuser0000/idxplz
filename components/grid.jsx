@@ -8,8 +8,8 @@ const Container = styled.div`
     ${props => props.rowGap ? 'grid-row-gap: '+props.rowGap+';' : ''}
     ${props => props.templateColumns ? 'grid-template-columns: '+props.templateColumns+';' : ''}
     ${props => props.templateRows ? 'grid-template-rows: '+props.templateRows+';' : ''}
+    ${props => props.templateAreas ? 'grid-template-areas: '+props.templateAreas+';' : ''}
     ${props => props.css ? props.css : ''}
-
 `;
 
 export default function Grid(props) {

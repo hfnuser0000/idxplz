@@ -33,3 +33,7 @@ strong {
 #nprogress .spinner {
   display: none !important;
 }
+
+#nprogress .bar {
+  height: 5px;
+}

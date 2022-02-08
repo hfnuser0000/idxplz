@@ -8,10 +8,19 @@ const Container = styled.footer`
     display: flex;
     justify-content: center;
     align-items: stretch;
-    padding: 0rem var(--screen-padding);
+    padding: 2rem var(--screen-padding);
+    background: #333;
+
+    * {
+        color: #eee;
+        font-size: .8rem;
+    }
+
+    a {
+        font-weight: bold;
+    }
 
     .absolute-footer {
-        border-top: 1px solid #ff5a2d;
         max-width: var(--screen-max-width);
         width: 100%;
         padding: 1rem 0;
@@ -22,6 +31,10 @@ const Container = styled.footer`
         display: flex;
         flex-direction: column;
         flex-wrap: wrap;
+
+        a {
+            font-weight: unset;
+        }
     }
 
     .contact-line {
@@ -65,30 +78,30 @@ export default function Footer(props) {
         <div className='absolute-footer'>
             <Grid className="grid" templateColumns="1fr 1fr 1fr 1fr" gap="1rem" style={{margin: '1rem 0'}}>
                 <div style={{display:'flex',flexDirection:'column'}}>
-                    <Link href="https://shop.printinix.com/about-us/">
+                    <Link href="/">
                         <a>About us</a>
                     </Link>
-                    <Link href="https://shop.printinix.com/contact-us/">
+                    <Link href="/">
                         <a>Contact us</a>
                     </Link>
-                    <Link href="https://shop.printinix.com/faqs/">
+                    <Link href="/">
                         <a>FAQs</a>
                     </Link>
-                    <Link href="https://shop.printinix.com/tracking-order/">
+                    <Link href="/">
                         <a>Tracking Order</a>
                     </Link>
                 </div>
                 <div style={{display:'flex',flexDirection:'column'}}>
-                    <Link href="https://shop.printinix.com/shipping/">
+                    <Link href="/">
                         <a>Shipping</a>
                     </Link>
-                    <Link href="https://shop.printinix.com/refunds-returns-exchanges-policy/">
+                    <Link href="/">
                         <a>Return and refund policy</a>
                     </Link>
-                    <Link href="https://shop.printinix.com/privacy-policy-2/">
+                    <Link href="/">
                         <a>Privacy policy</a>
                     </Link>
-                    <Link href="https://shop.printinix.com/terms-of-service/">
+                    <Link href="/">
                         <a>Terms of service</a>
                     </Link>
                 </div>

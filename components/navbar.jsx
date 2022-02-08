@@ -6,9 +6,12 @@ import Image from 'next/image';
 import Button from './button';
 import Icon from './icon';
 
+import Logo from '../public/logo.svg';
+import globalState from '@/core/global-state';
+
 const Container = styled.div`
     height: 5rem;
-    background: #fff;
+    background: #333;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -73,12 +76,14 @@ const Container = styled.div`
 export default function Navbar(props) {
     return <Container>
         <div className='wrapper'>
-            <Link href="https://shop.printinix.com/">
-            {/* <Link href="/"> */}
-                <a className="logo" draggable="false">
-                    <Image src="/logo-300x.png" alt='logo' layout="fill" objectFit="contain" priority={true} draggable="false" />
+            <Link href="/">
+                <a className="logo" onDragStart={e => e.preventDefault()}>
+                    <Image src={Logo} alt='logo' layout="fill" objectFit="contain" priority={true} />
                 </a>
             </Link>
+            <Button onClick={e => globalState.showSidebar.set(p => !p)} background="transparent">
+                <Icon name="fasBars" style={{ width: '1.5rem', transform: 'translateY(3px)', fill: '#ffd43b' }}></Icon>
+            </Button>
             {/* <div className="nav-links">
                 <Link href="https://shop.printinix.com/shop/">
                     <a>Men</a>
@@ -102,3 +107,6 @@ export default function Navbar(props) {
         </div>
     </Container>;
 }
+
+
+

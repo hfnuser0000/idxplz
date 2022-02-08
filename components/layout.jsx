@@ -3,8 +3,10 @@ import { useEffect } from "react";
 import { createState } from "@hookstate/core";
 
 import Navbar from "@/components/navbar";
+import Sidebar from "@/components/sidebar";
 import Footer from "@/components/footer";
 import styled from "styled-components";
+import globalState from "@/core/global-state";
 
 const globalCSS = `
     main.main-content {
@@ -29,10 +31,9 @@ const ContentContainer = styled.div`
 
 export default function Layout(props) {
     useEffect(() => {
-        window.globalState = createState({});
+        window.globalState = globalState;
     }, []);
-    const CONFIG = process.env.CONFIG;
-    const title = props.title ? props.title + ` — ${CONFIG.siteinfo.name} Custom Name Apparel` : CONFIG.siteinfo.name + '  Custom Name Apparel';
+    const title = props.title ? props.title + ` — indexplz` : 'indexplz';
     return <>
         <style jsx global>{ globalCSS }</style>
 
@@ -59,7 +60,7 @@ export default function Layout(props) {
             <meta property="og:title" content={title} />
             <meta property="og:description" content={props.description} />
             <meta property="og:image" content={props.thumbnail ?? "https://cms.printinix.com/uploads/t_shirt_mockup_50b0640f9c.jpg"} />
-            <meta property="og:site_name" content={CONFIG.siteinfo.name} />
+            <meta property="og:site_name" content={`indexplz`} />
 
             <meta name="twitter:url" content={props.url} />
             <meta name="twitter:title" content={title} />
@@ -69,15 +70,11 @@ export default function Layout(props) {
 
             <link rel="manifest" href="/site.webmanifest" />
             <link rel="canonical" href={props.url} />
-
-            <link rel="icon" href="/favicon.ico" />
-            <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
-            <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
-            <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon-180x180.png" />
         </Head>
 
         <main className="main-content">
             <Navbar/>
+            <Sidebar/>
             <ContentContainer>
                 { props.children }
             </ContentContainer>

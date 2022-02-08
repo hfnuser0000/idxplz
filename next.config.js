@@ -1,4 +1,3 @@
-const configJSON = require('./config.json');
 const withBundleAnalyzer = require('@next/bundle-analyzer')({
     enabled: process.env.ANALYZE === 'true',
 });
@@ -27,9 +26,5 @@ module.exports = withBundleAnalyzer({
             });
         }
         return config;
-    },
-    env: {
-        CONFIG: configJSON,
-        googleAnalyticsID: "G-YWCSERQ3VY"
     }
 });

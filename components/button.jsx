@@ -9,8 +9,9 @@ const Container = styled.button`
     cursor: pointer;
     ${props => props.background ? 'background: '+props.background+';' : ''}
     :hover {
-        color: #ff5a2d;
-        --color: #ff5a2d;
+        color: #000;
+        background: #ffd43b;
+        --color: #000;
     }
 `;
 
