@@ -8,7 +8,62 @@ router.use(express.json());
 
 router.get('/rss/recent-posts', async(req, res) => {
     const RSS = require('rss-generator');
-    const siteDescription = null;
+    const cmsApi = require('../core/api/cms');
+    const MarkdownIt = require('markdown-it');
+    const md = new MarkdownIt();
+
+    const siteDescription = `Recent posts - IndexPlz`;
+    const siteURL = 'https://indexplz.com';
+    const author = 'IndexPlz';
+    const date = new Date();
+
+    const posts = (await cmsApi.posts.get({page: 1, populate: '*'})).data.data.map(post => {
+        return {
+            title: post.attributes.Title,
+            slug: post.attributes.Slug,
+            description: post.attributes.Description ?? '',
+            thumbnail: post.attributes.Thumbnail.data
+                ? "https://cms.indexplz.com"+post.attributes.Thumbnail.data.attributes.url
+                : null
+        }
+    });
+
+    const feed = new RSS({
+        title: `Recent posts - IndexPlz`,
+        description: siteDescription,
+        site_url: siteURL,
+        feed_url: 'https://indexplz.com/rss/recent-posts/',
+        image_url: 'https://indexplz.com/android-chrome-512x512.png',
+        copyright: `All rights reserved ${date.getFullYear()}, IndexPlz`,
+        pubDate: date,
+        version: '2.0',
+        custom_namespaces: {
+            media: 'http://search.yahoo.com/mrss/',
+        }
+    });
+
+    posts.forEach(post => {
+        const url  = `${siteURL}/posts/${post.slug}`;
+        const description = post.description.slice(0, 296) + ' ...';
+        feed.item({
+            title: `${post.title} — IndexPlz`,
+            url: url,
+            description: description,
+            contributor: [author],
+            date: date,
+            custom_elements: [
+                {
+                    'media:content': {
+                        _attr: {
+                            medium: 'image',
+                            url: post.thumbnail
+                        }
+                    }
+                }
+            ]
+        });
+    });
+    res.set("Content-Type", "text/xml").send(feed.xml());
 });
 
 router.get("/rss/default/:rssname", async (req, res) => {

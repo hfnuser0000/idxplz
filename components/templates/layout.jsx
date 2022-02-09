@@ -33,7 +33,7 @@ export default function Layout(props) {
     useEffect(() => {
         window.globalState = globalState;
     }, []);
-    const title = props.title ? props.title + ` — indexplz` : 'indexplz';
+    const title = props.title ? props.title + ` — IndexPlz` : 'IndexPlz';
     return <>
         <style jsx global>{ globalCSS }</style>
 

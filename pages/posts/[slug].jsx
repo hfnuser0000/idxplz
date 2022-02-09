@@ -15,8 +15,8 @@ import ImageVersion         from 'core/image-version';
 export async function getServerSideProps(context) {
     const cmsApi = require('@/core/api/cms');
     const MarkdownIt = require('markdown-it');
-    const { slug }          = context.params;
     const md = new MarkdownIt();
+    const { slug }          = context.params;
     const posts = (await cmsApi.posts.get({page: 1, populate: '*', filters: {
         Slug: slug
     }})).data;
@@ -79,3 +79,5 @@ export default function ShopPage(props) {
         </Container>
     </Layout>;
 }
+
+
