@@ -9,7 +9,7 @@ module.exports = withBundleAnalyzer({
         deviceSizes: [
             240, 320, 480, 640, 750, 828, 1080, 1200, 1920, 2048, 3840,
         ],
-        domains: ["cdn.printinix.com", "cms.printinix.com"],
+        domains: ["cms.indexplz.com"],
     },
     experimental: {
         // Enables the styled-components SWC transform

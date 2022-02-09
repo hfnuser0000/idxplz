@@ -59,14 +59,14 @@ export default function Layout(props) {
             <meta property="og:url" content={props.url} />
             <meta property="og:title" content={title} />
             <meta property="og:description" content={props.description} />
-            <meta property="og:image" content={props.thumbnail ?? "https://cms.printinix.com/uploads/t_shirt_mockup_50b0640f9c.jpg"} />
+            <meta property="og:image" content={props.thumbnail ?? ""} />
             <meta property="og:site_name" content={`indexplz`} />
 
             <meta name="twitter:url" content={props.url} />
             <meta name="twitter:title" content={title} />
             <meta name="twitter:description" content={props.description} />
             <meta name="twitter:card" content="summary_large_image" />
-            <meta name="twitter:image" content={props.thumbnail ?? "https://cms.printinix.com/uploads/t_shirt_mockup_50b0640f9c.jpg"} />
+            <meta name="twitter:image" content={props.thumbnail ?? ""} />
 
             <link rel="manifest" href="/site.webmanifest" />
             <link rel="canonical" href={props.url} />

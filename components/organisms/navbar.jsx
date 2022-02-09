@@ -83,26 +83,6 @@ export default function Navbar(props) {
             <Button onClick={e => globalState.showSidebar.set(p => !p)} background="transparent">
                 <Icon name="fasBars" style={{ width: '1.5rem', transform: 'translateY(3px)', fill: '#ffd43b' }}></Icon>
             </Button>
-            {/* <div className="nav-links">
-                <Link href="https://shop.printinix.com/shop/">
-                    <a>Men</a>
-                </Link>
-                <Link href="https://shop.printinix.com/shop/">
-                    <a>Women</a>
-                </Link>
-                <Link href="https://shop.printinix.com/shop/">
-                    <a>Kids</a>
-                </Link>
-                <Link href="https://shop.printinix.com/shop/">
-                    <a>Unisex</a>
-                </Link>
-                <Link href="https://shop.printinix.com/shop/">
-                    <a>Products</a>
-                </Link>
-            </div>
-            <Link href="https://shop.printinix.com/cart/">
-                <a><Icon name="fa6thinShoppingCart" style={{ width: '1.5rem', transform: 'translateY(3px)' }}></Icon></a>
-            </Link> */}
         </div>
     </Container>;
 }

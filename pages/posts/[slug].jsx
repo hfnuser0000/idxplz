@@ -59,7 +59,9 @@ export default function ShopPage(props) {
         <h2>Uh oh...</h2>
         <p>{`Looks like the page has been removed.`}</p>
     </>
+    let title = 'Not found';
     if(post) {
+        title = post.title;
         postEl = <>
             <Link href={'/posts/'+post.slug}>
                 <a>
@@ -71,7 +73,7 @@ export default function ShopPage(props) {
             <div dangerouslySetInnerHTML={{__html: post.content}}></div>
         </>
     }
-    return <Layout>
+    return <Layout title={title}>
         <Container>
             {postEl}
         </Container>
