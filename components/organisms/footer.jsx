@@ -75,7 +75,7 @@ const Container = styled.footer`
 export default function Footer(props) {
     return <Container>
         <div className='absolute-footer'>
-            <span><small>&copy; 2021 Indexplz. </small></span>
+            <span><small>&copy; 2021 IndexPlz. </small></span>
             <span><small>All rights reserved.</small></span>
         </div>
     </Container>
