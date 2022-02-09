@@ -3,10 +3,10 @@ import styled from 'styled-components';
 import Link from 'next/link';
 import Image from 'next/image';
 
-import Button from './button';
-import Icon from './icon';
+import Button from '@/components/atoms/button';
+import Icon from '@/components/atoms/icon';
 
-import Logo from '../public/logo.svg';
+import Logo from '@/public/logo.svg';
 import globalState from '@/core/global-state';
 
 const Container = styled.div`
@@ -18,7 +18,6 @@ const Container = styled.div`
     position: sticky;
     top: 0;
     width: 100%;
-    border-bottom: 1px solid #eee3dd;
     box-shadow: 0 2px 5px #2222;
     user-select: none;
     padding: 0rem var(--screen-padding);

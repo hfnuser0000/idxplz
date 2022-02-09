@@ -2,7 +2,7 @@ import styled               from 'styled-components';
 
 import Link                 from 'next/link';
 
-import Grid                 from "@/components/grid";
+import Grid                 from "@/components/atoms/grid";
 
 const Container = styled.footer`
     display: flex;
@@ -76,7 +76,7 @@ const Container = styled.footer`
 export default function Footer(props) {
     return <Container>
         <div className='absolute-footer'>
-            <Grid className="grid" templateColumns="1fr 1fr 1fr 1fr" gap="1rem" style={{margin: '1rem 0'}}>
+            {/* <Grid className="grid" templateColumns="1fr 1fr 1fr 1fr" gap="1rem" style={{margin: '1rem 0'}}>
                 <div style={{display:'flex',flexDirection:'column'}}>
                     <Link href="/">
                         <a>About us</a>
@@ -115,8 +115,8 @@ export default function Footer(props) {
                         <Link href="mailto:support@printinix.com"><a>support@printinix.com</a></Link>
                     </span>
                 </div>
-            </Grid>
-            <span><small>&copy; 2021 Printinix. </small></span>
+            </Grid> */}
+            <span><small>&copy; 2021 Indexplz. </small></span>
             <span><small>All rights reserved.</small></span>
         </div>
     </Container>

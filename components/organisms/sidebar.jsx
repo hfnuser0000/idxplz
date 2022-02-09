@@ -3,11 +3,11 @@ import styled from 'styled-components';
 import Link from 'next/link';
 import Image from 'next/image';
 
-import Button from './button';
-import Icon from './icon';
-import Grid from './grid';
+import Button from '@/components/atoms/button';
+import Icon from '@/components/atoms/icon';
+import Grid from '@/components/atoms/grid';
 
-import Logo from '../public/logo.svg';
+import Logo from '@/public/logo.svg';
 
 import { useState } from '@hookstate/core';
 import globalState from '@/core/global-state';
@@ -33,6 +33,10 @@ const Container = styled.div`
     padding: 0rem var(--screen-padding);
     user-select: none;
     transition: .25s;
+    
+    @media screen and (max-width: 1200px) {
+        width: 100%;
+    }
 
     > .sidebar-head {
         width: 100%;
@@ -95,7 +99,7 @@ export default function Sidebar(props) {
             </Button>
         </div>
         <div className='wrapper'>
-            <p>{'sidebar'}</p>
+            {/* <p>{'sidebar'}</p> */}
         </div>
     </Container>;
 }

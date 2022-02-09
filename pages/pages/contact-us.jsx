@@ -1,7 +1,7 @@
 import styled               from "styled-components";
 
-import Layout               from "@/components/layout";
-import Button               from "@/components/button";
+import Layout               from "@/components/templates/layout";
+import Button               from "@/components/atoms/button";
 
 export async function getStaticProps(context) {
     return {

@@ -2,8 +2,8 @@ import styled               from "styled-components";
 
 import Link                 from "next/link";
 
-import Layout               from "@/components/layout";
-import Card                 from "@/components/card";
+import Layout               from "@/components/templates/layout";
+import Card                 from "@/components/molecules/card";
 
 export async function getStaticProps(context) {
     return {

@@ -2,9 +2,9 @@ import Head from "next/head";
 import { useEffect } from "react";
 import { createState } from "@hookstate/core";
 
-import Navbar from "@/components/navbar";
-import Sidebar from "@/components/sidebar";
-import Footer from "@/components/footer";
+import Navbar from "@/components/organisms/navbar";
+import Sidebar from "@/components/organisms/sidebar";
+import Footer from "@/components/organisms/footer";
 import styled from "styled-components";
 import globalState from "@/core/global-state";
 

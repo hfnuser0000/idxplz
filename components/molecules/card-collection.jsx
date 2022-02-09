@@ -1,4 +1,4 @@
-import Grid from "./grid";
+import Grid from "../atoms/grid";
 
 const gridCSS = `
     grid-template-columns: 1fr 1fr 1fr 1fr;

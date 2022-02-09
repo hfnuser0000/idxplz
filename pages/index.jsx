@@ -1,37 +1,41 @@
 import styled               from "styled-components";
 
-import Layout               from "@/components/layout";
-import CollectionHeading    from "@/components/collection-heading";
-import PostTitle            from "@/components/post-title";
-import Grid                 from "@/components/grid";
+import Layout               from "@/components/templates/layout";
+import CollectionHeading    from "@/components/atoms/collection-heading";
+import PostTitle            from "@/components/atoms/post-title";
+import PostCard             from "@/components/molecules/post-card";
+import Grid                 from "@/components/atoms/grid";
+import Link                 from "next/link";
 
-import Image                from "@/components/image";
-import DemoImage            from '@/public/demo.png';
-
-export async function getStaticProps(context) {
-    const MarkdownIt = require('markdown-it');
-    const md = new MarkdownIt();
-    const demoPageContent = {
-        title: '60+ Best Cyber Monday Deals Happening Right Now',
-        body: md.render(`
-Every year it seems like Black Friday and Cyber Monday deals start earlier and earlier, but this year might just break the record, with so many retailers having launched special savings events for the whole month of November. Get gifts for the [whole family](https://www.bestproducts.com/parenting/kids/g24440535/top-family-gift-ideas/) without worrying about potential shipping delays — and maybe even pick up a few things for the house in time for holiday hosting.
-        
-Whether you're searching for some new kitchen gadgets for the baker in your life, new tech for the music lovers, or just want to treat yourself to some updated wardrobe staples, we've got you covered this Cyber Monday.
-        `)
-    };
+export async function getServerSideProps(context) {
+    const cmsApi = require('@/core/api/cms');
+    const posts = (await cmsApi.posts.get({page: 1, populate: ['Thumbnail'], fields: ['Title', 'Slug']})).data;
     return {
         props: {
-            pageContent: demoPageContent
+            posts: posts.data.map(post => ({
+                title: post.attributes.Title,
+                slug: post.attributes.Slug,
+                thumbnail: post.attributes.Thumbnail.data
+                    ? "https://cms.indexplz.com"+post.attributes.Thumbnail.data.attributes.formats.thumbnail.url
+                    : null
+            }))
         },
-        revalidate: 300, // In seconds
+        // revalidate: 300, // In seconds
     }
 }
 
 const Container = styled.div`
+    img {
+        object-fit: contain;
+        max-width: 100%;
+    }
+    h1 {
+        font-weight: bold;
+    }
 `;
 
 export default function HomePage(props) {
-    const { pageContent } = props;
+    const { pageContent, posts } = props;
     return <Layout title="Home">
         <Container>
             <Grid templateColumns="1fr 1fr 1fr 1fr" gap="1rem" css={`
@@ -42,14 +46,27 @@ export default function HomePage(props) {
                                          "main main main main";
                 }
                 `}>
-                <p style={{gridArea: 'content-table',background: '#ffd43b',minHeight:'10rem'}}></p>
-                <p style={{gridArea: 'main', justifySelf: 'left'}}>
-                    <PostTitle>
-                        {pageContent.title}
-                    </PostTitle>
-                    <Image src='/demo.png'/>
-                    <div dangerouslySetInnerHTML={{__html: pageContent.body}}></div>
-                </p>
+                {/* <div style={{gridArea: 'content-table',background: '#ffd43b',minHeight:'10rem'}}></div> */}
+                <div style={{gridArea: 'main', justifySelf: 'left'}}>
+                    <h1>Recent posts</h1>
+                    <Grid gap="1rem" css={`
+                        grid-template-columns: 1fr 1fr 1fr;
+
+                        @media screen and (max-width: 800px) {
+                            grid-template-columns: 1fr 1fr;
+                        }
+                        `}>
+                            { posts.map((post, idx) =>
+                                <PostCard
+                                    key={idx}
+                                    title={post.title}
+                                    thumbnail={post.thumbnail}
+                                    href={'/posts/'+post.slug}
+                                    style={{gridArea: 'card', justifySelf: 'left'}}
+                                />
+                            ) }
+                    </Grid>
+                </div>
             </Grid>
         </Container>
     </Layout>;

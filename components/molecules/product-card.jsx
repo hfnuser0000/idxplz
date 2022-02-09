@@ -2,7 +2,7 @@ import styled               from "styled-components";
 
 import Link                 from 'next/link';
 
-import Image                from "./image";
+import Image                from "../atoms/image";
 import Card                 from "./card";
 
 const Container = styled.div`
