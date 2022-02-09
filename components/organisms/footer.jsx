@@ -23,7 +23,6 @@ const Container = styled.footer`
     .absolute-footer {
         max-width: var(--screen-max-width);
         width: 100%;
-        padding: 1rem 0;
     }
 
     .contact-wrapper {
