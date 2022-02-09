@@ -1,5 +1,8 @@
 import os
 import shutil
 
-os.remove('.next.zip')
+try:
+    os.remove('.next.zip')
+except:
+    print('Failed to remove .next.zip')
 shutil.make_archive('.next', 'zip', '.next')

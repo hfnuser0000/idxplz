@@ -46,41 +46,10 @@ const Container = styled.div`
         object-fit: contain;
         max-width: 100%;
     }
-
-    .card {
-        position: relative;
-    }
-
-    .description-card {
-        background: #7771;
-        margin: 2rem 0;
-
-        > div {
-            position: relative;
-        }
-    }
-
-    .random-names {
-        // background: #7771;
-        margin: 2rem 0;
-
-        display: flex;
-        flex-wrap: wrap;
-
-        > div {
-            position: relative;
-        }
-
-        p {
-            width: 100%;
-        }
-
-        a {
-            display: inline-block;
-            background: #7771;
-            padding: .5rem 1rem;
-            margin: .5rem;
-        }
+    blockquote {
+        background: #eee;
+        margin: 0;
+        padding: 2rem;
     }
 `;
 
